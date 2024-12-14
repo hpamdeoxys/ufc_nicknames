@@ -133,7 +133,7 @@ This script validates your implementation:
 ```bash
 📤 git add .
 📝 git commit -m "Completed assignment implementation"
-🌐 git push origin main
+🌐 git push origin master
 ```
 
 ### Step 8: Submit the Assignment
