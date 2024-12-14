@@ -1,6 +1,7 @@
 # 🥋 **MMA Fighter Statistics Assignment** 🥊
 
-![📸 Placeholder for Assignment Logo or Image]
+![📸 UFC Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/UFC_Logo.svg/2560px-UFC_Logo.svg.png)
+
 
 Welcome to the **MMA Fighter Statistics Assignment**! 🚀 This guide provides everything you need to know about completing the assignment. Follow these instructions carefully to achieve your goals.
 
