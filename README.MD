@@ -1,186 +1,149 @@
-# MMA Fighter Statistics Assignment
+# 🥋 **MMA Fighter Statistics Assignment** 🥊
 
-![Placeholder for Assignment Logo or Image]
+![📸 Placeholder for Assignment Logo or Image]
 
-Welcome to the MMA Fighter Statistics Assignment! This document provides a detailed overview of what you are expected to do, how to structure your files, and how to run and submit your work. Follow the instructions carefully to ensure your assignment meets all requirements.
-
----
-
-## Objective
-
-You will analyze an MMA dataset, process the data, and perform tests to validate the correctness of your implementation. Your final output will be compared with an expected dataset to verify your results.
-
-You are required to create **two files**:
-
-1. `tests/test_fight.py` (under the `tests` folder): A test file to validate the correctness of your implementation.
-2. `score_assignment.py` (in the root directory): A Python script to process the MMA dataset and generate the required output.
+Welcome to the **MMA Fighter Statistics Assignment**! 🚀 This guide provides everything you need to know about completing the assignment. Follow these instructions carefully to achieve your goals.
 
 ---
 
-## Files Provided
+## 🎯 **Objective**
 
-1. **Dataset**: `ufc-fighters-statistics.csv` - The input dataset.
-2. **Expected Output**: `nicknames.csv` - The expected output dataset.
-3. **Autograder Script**: `run_autograder.py` - A script to validate your implementation.
+You will analyze an **MMA dataset**, process the data, and validate your implementation through testing. Your results will be compared with an expected dataset for accuracy.
+
+### Deliverables:
+1. **`tests/test_fight.py`** (under the `tests` folder): Test file to ensure your code works correctly.
+2. **`score_assignment.py`** (in the root directory): Python script to process the MMA dataset and generate the required output.
 
 ---
 
-## File Requirements
+## 📂 **Files Provided**
 
-### `tests/test_fight.py`
+1. **Dataset**: `ufc-fighters-statistics.csv` - Input data for the assignment.
+2. **Expected Output**: `nicknames.csv` - A reference for validation.
+3. **Autograder Script**: `run_autograder.py` - Script to automate testing and evaluation.
 
-This is your test file, which will run using `pytest`. Below is a summary of the tests you are required to include:
+---
 
-- **Test 1: `test_clean_data`**
+## 📝 **File Requirements**
 
-  - Verify that missing values in `height_cm` and `stance` are handled correctly.
-  - Ensure duplicates are removed.
+### 🔍 `tests/test_fight.py`
 
-- **Test 2: `test_add_win_rate`**
+A **`pytest`** file to test your implementation. Here’s what you need to include:
 
-  - Verify the "Win Rate (%)" column is added correctly.
-  - Ensure the win rate is calculated accurately.
-  
-  Formula for Win Rate:
+#### **Test 1: `test_clean_data`**
+- Ensure missing values in `height_cm` and `stance` are handled correctly.
+- Verify that duplicates are removed successfully.
+
+#### **Test 2: `test_add_win_rate`**
+- Check that the "Win Rate (%)" column is added and calculated accurately.
+- **Formula:**
   ```
   Win Rate (%) = (wins / (wins + losses + draws)) * 100
   ```
 
-- **Test 3: `test_get_nickname`**
-
-  - Ensure nicknames are generated correctly when missing.
-  - Validate that duplicate nicknames are handled properly using a unique suffix.
-  - Check for potential division by zero errors.
-
-### `score_assignment.py`
-
-This script processes the MMA dataset and generates `student_output.csv`. It includes the following functions:
-
-- **`load_data(file_path)`**
-
-  - **Purpose**: Loads the MMA dataset from a CSV file.
-  - **Input**: File path to the dataset.
-  - **Output**: A pandas DataFrame containing the dataset.
-
-- **`clean_data(df)`**
-
-  - **Purpose**: Handles missing values and removes duplicates.
-  - **Details**:
-    - Missing values in `height_cm`, `weight_in_kg`, `reach_in_cm` are filled with `0`.
-    - Missing `stance` values are replaced with "Unknown".
-    - Duplicates are dropped.
-  - **Output**: A cleaned DataFrame.
-
-- **`add_win_rate(df)`**
-
-  - **Purpose**: Adds a derived column for "Win Rate (%)".
-  - **Details**: Win rate is calculated using the formula:
-    ```
-    Win Rate (%) = (wins / (wins + losses + draws)) * 100
-    ```
-  - **Output**: A DataFrame with the additional "Win Rate (%)" column.
-
-- **`get_nickname(df)`**
-
-  - **Purpose**: Generates nicknames for fighters.
-  - **Details**:
-    - If `nickname` is missing, it uses the fighter's first name.
-    - Handles duplicate nicknames by appending a unique suffix based on a counter and win-loss ratio.
-    - Example:
-      - Fighter A: Nickname = "John"
-      - Fighter B: Nickname = "John_1_2.50" (indicating 2.5 win-loss ratio)
-  - **Output**: A DataFrame with updated nicknames.
-
-- **`generate_visualizations(df)`**
-
-  - **Purpose**: Creates visualizations from the data.
-  - **Details**:
-    1. **Bar Chart**: Nickname vs Win Rate (%)
-    2. **Scatter Plot**: Height (cm) vs Reach (cm)
-  - **Output**: Saves visualizations as `win_rate_bar_chart.png` and `height_vs_reach_scatter.png`.
-
-### `run_autograder.py`
-
-This script validates your implementation. It:
-
-1. Runs `score_assignment.py`.
-2. Compares `student_output.csv` with `nicknames.csv`.
-3. Executes the tests in `tests/test_fight.py` using `pytest`.
+#### **Test 3: `test_get_nickname`**
+- Ensure nicknames are generated for fighters without one.
+- Validate duplicate nicknames are handled with unique suffixes.
+- Prevent division by zero errors.
 
 ---
 
-## How to Run and Submit the Assignment
+### ⚙️ `score_assignment.py`
+
+A script that processes the MMA dataset and generates `student_output.csv`. Key functions:
+
+#### **`load_data(file_path)`**
+- **Purpose**: Load the dataset from a CSV file.
+- **Input**: Path to the file.
+- **Output**: A pandas DataFrame.
+
+#### **`clean_data(df)`**
+- **Purpose**: Handle missing values and remove duplicates.
+- **Details**:
+  - Replace missing values in `height_cm`, `weight_in_kg`, and `reach_in_cm` with `0`.
+  - Fill missing `stance` with "Unknown".
+  - Drop duplicate records.
+- **Output**: Cleaned DataFrame.
+
+#### **`add_win_rate(df)`**
+- **Purpose**: Add a column for "Win Rate (%)".
+- **Formula:**
+  ```
+  Win Rate (%) = (wins / (wins + losses + draws)) * 100
+  ```
+- **Output**: DataFrame with "Win Rate (%)".
+
+#### **`get_nickname(df)`**
+- **Purpose**: Generate nicknames for fighters.
+- **Details**:
+  - Use the fighter's first name if `nickname` is missing.
+  - Handle duplicates by appending a unique suffix, e.g., "John_1_2.50".
+  - Suffix indicates the win-loss ratio.
+- **Output**: DataFrame with updated nicknames.
+
+#### **`generate_visualizations(df)`**
+- **Purpose**: Create visualizations from the data.
+- **Visualizations:**
+  1. **Bar Chart**: Nickname vs Win Rate (%).
+  2. **Scatter Plot**: Height (cm) vs Reach (cm).
+- **Output**: Save charts as `win_rate_bar_chart.png` and `height_vs_reach_scatter.png`.
+
+---
+
+### 🧪 `run_autograder.py`
+
+This script validates your implementation:
+1. Runs `score_assignment.py`.
+2. Compares `student_output.csv` with `nicknames.csv`.
+3. Executes `tests/test_fight.py` using `pytest`.
+
+---
+
+## 🚀 **How to Run and Submit the Assignment**
 
 ### Step 1: Accept the Assignment
-
-You will be provided a link to accept the assignment. Click on the link and follow the prompts.
+🔗 Click the link provided to accept the assignment.
 
 ### Step 2: Clone the Repository
-
-Once you accept the assignment, clone the repository to your local machine using:
-
 ```bash
-git clone <repository_url>
+💻 git clone <repository_url>
 ```
 
 ### Step 3: Install Dependencies
-
-Install the required Python libraries using the provided `requirements.txt` file:
-
 ```bash
-pip install -r requirements.txt
+📦 pip install -r requirements.txt
 ```
 
 ### Step 4: Run `score_assignment.py`
-
-Run the `score_assignment.py` script to generate `student_output.csv`:
-
 ```bash
-python score_assignment.py
+⚙️ python score_assignment.py
 ```
-
-Verify that the file `student_output.csv` matches `nicknames.csv`.
+- Ensure `student_output.csv` matches `nicknames.csv`.
 
 ### Step 5: Create `test_fight.py`
+- Write tests as per the "File Requirements" section.
 
-Create the `test_fight.py` file under the `tests` folder. Add the tests as described in the "File Requirements" section.
-
-### Step 6: Test Your Implementation
-
-Run the `pytest` tests to validate your implementation:
-
+### Step 6: Run Tests
 ```bash
-pytest tests/test_fight.py
+🧪 pytest tests/test_fight.py
 ```
 
 ### Step 7: Commit and Push Your Code
-
-Follow these steps to push your code to GitHub:
-
-1. Add all changes:
-   ```bash
-   git add .
-   ```
-2. Commit your changes:
-   ```bash
-   git commit -m "Completed assignment implementation"
-   ```
-3. Push to the repository:
-   ```bash
-   git push origin main
-   ```
+```bash
+📤 git add .
+📝 git commit -m "Completed assignment implementation"
+🌐 git push origin main
+```
 
 ### Step 8: Submit the Assignment
-
-Once you have pushed your code to GitHub, ensure all files are present and tests pass. Submit your repository link as instructed.
+- Verify all files are correct.
+- Submit the repository link as instructed.
 
 ---
 
-## Additional Notes
+## 🔔 **Additional Notes**
 
-- Ensure your code is well-commented and adheres to Python best practices.
-- Verify that all tests pass before submission.
-- If you encounter any issues, consult your instructor or teaching assistant.
+- Reach out to me for help if needed.
 
-Good luck with the assignment!
+✨ **Good luck! You’ve got this!** ✨
 
